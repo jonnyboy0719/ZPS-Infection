@@ -7,6 +7,3 @@ Simply put the folders under your `addons/sourcemod` folder
 # Convars
 `sm_infection_version -- Checks the version of the plugin`   
 `sm_infection_set <0|100> -- Set infection percentage (higher ratio = easier for carrier to infect someone)`   
-   
-
-This plugin will automatically create a config file under `cfg/sourcemod/`
