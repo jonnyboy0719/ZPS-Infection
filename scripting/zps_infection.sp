@@ -8,7 +8,7 @@
 /*
 	DEFINES
 */
-#define PLUGIN_VERSION "1.0"
+#define PLUGIN_VERSION "1.1"
 #define PLUGIN_NAME "[ZPS] Infection Rate Changer"
 
 // Cvars
@@ -54,15 +54,11 @@ public OnPluginStart()
 */
 public action_ConvarChanged(Handle:convar, const String:oldValue[], const String:newValue[])
 {
-	// Lets uncheat the convars, höhö :V
-	if (convar == cvar_setinfection)
-	{
-		new flags = GetCommandFlags("infected_chance");
-		SetCommandFlags("infected_chance", flags & ~FCVAR_CHEAT);
-		ServerCommand("infected_chance %d", GetConVarInt(cvar_setinfection));
-	}
+	new flags = GetCommandFlags("infected_chance");
+	SetCommandFlags("infected_chance", flags & ~FCVAR_CHEAT);
+	ServerCommand("infected_chance %d", GetConVarInt(cvar_setinfection));
 
-	CreateTimer(1.0, Reset_Back, 0);
+	CreateTimer(0.002, Reset_Back, 0);
 }
 
 /*
