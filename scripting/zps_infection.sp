@@ -72,13 +72,11 @@ public OnPluginStart()
 public Action:Command_InfectionRate(client, args)
 {
 	if (client == 0)
-	{
 		return Plugin_Handled;
-	}
 
 	if (!IsClientInGame(client))
 		return Plugin_Handled;
-	
+
 	InfectionRate(client);
 
 	return Plugin_Handled;
@@ -89,18 +87,17 @@ public Action:Command_InfectionRate(client, args)
 */
 stock InfectionRate(client)
 {
-	decl String:finalOutput[1024];
-	finalOutput[0] = 0;
-	
 	if (cvar_setinfection != INVALID_HANDLE)
 	{
 		InfectionChance = FindConVar("infected_chance");
 		new remaining = GetConVarInt(InfectionChance);
 
-		if(remaining == 10)
-			CPrintToChatAll("Infection Rate is currently on: {green}Default{default}");
+		if(remaining == 0)
+			CPrintToChatAll("Infection Rate is currently: {green}Disabled{default}");
+		else if(remaining == 10)
+			CPrintToChatAll("Infection Rate is currently: {green}Default{default}");
 		else
-			CPrintToChatAll("Infection Rate is currently on: {green}%d{default}", remaining);
+			CPrintToChatAll("Infection Rate is currently: {green}%d{default}%", remaining);
 	}
 }
 
